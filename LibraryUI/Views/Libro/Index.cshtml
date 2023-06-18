@@ -1,0 +1,40 @@
+﻿@using LibraryDAL.Entities
+@model List<Libro>
+
+@{
+    ViewData["Title"] = "Libros";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h5>Empleados</h5>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-success btn-sm" asp-action="Detalle_Empleado" asp-contoller="Home" asp-route-idEmpleado="0">Nuevo</a>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Telefono</th>
+                    <th>Cargo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.ISBN</td>
+                        <td>@item.Estado</td>                       
+                        <td><a class="btn btn-primary btn-sm" asp-action="Detalle_Empleado" asp-contoller="Home" asp-route-idEmpleado="@item.ID">Editar</a></td>
+                        <td><a class="btn btn-danger btn-sm" asp-action="Eliminar_Empleado" asp-contoller="Home" asp-route-idEmpleado="@item.ID">Eliminar</a></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
